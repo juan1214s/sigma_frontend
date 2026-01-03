@@ -1,64 +1,100 @@
-<mat-horizontal-stepper linear>
+<mat-horizontal-stepper linear class="stepper-container">
 
-  <!-- Paso 1 -->
-  <mat-step [stepControl]="userForm">
+  <!-- STEP 1 -->
+  <mat-step [stepControl]="userForm" label="User Info">
     <form [formGroup]="userForm">
-      <mat-form-field>
-        <input matInput placeholder="Nombre" formControlName="name" />
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error>Name is required</mat-error>
       </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Email" formControlName="email" />
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error>Valid email is required</mat-error>
       </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Teléfono" formControlName="phone" />
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" />
       </mat-form-field>
 
-      <button mat-button matStepperNext>Continuar</button>
+      <div class="actions">
+        <button mat-raised-button color="primary"
+          matStepperNext
+          [disabled]="userForm.invalid">
+          Continue
+        </button>
+      </div>
+
     </form>
   </mat-step>
 
-  <!-- Paso 2 -->
-  <mat-step [stepControl]="addressForm">
+  <!-- STEP 2 -->
+  <mat-step [stepControl]="addressForm" label="Address">
     <form [formGroup]="addressForm">
-      <mat-form-field>
-        <input matInput placeholder="Calle" formControlName="street" />
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Street</mat-label>
+        <input matInput formControlName="street" />
       </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Ciudad" formControlName="city" />
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city" />
       </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="País" formControlName="country" />
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Country</mat-label>
+        <input matInput formControlName="country" />
       </mat-form-field>
 
-      <button mat-button matStepperNext>Continuar</button>
+      <div class="actions">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary"
+          matStepperNext
+          [disabled]="addressForm.invalid">
+          Continue
+        </button>
+      </div>
+
     </form>
   </mat-step>
 
-  <!-- Paso 3 -->
-  <mat-step [stepControl]="paymentForm">
+  <!-- STEP 3 -->
+  <mat-step [stepControl]="paymentForm" label="Payment">
     <form [formGroup]="paymentForm">
-      <mat-radio-group formControlName="paymentMethod">
+
+      <mat-radio-group formControlName="paymentMethod" class="radio-group">
         <mat-radio-button [value]="paymentMethods.Card">
-          Tarjeta
+          Credit Card
         </mat-radio-button>
         <mat-radio-button [value]="paymentMethods.Deposit">
-          Depósito
+          Bank Deposit
         </mat-radio-button>
       </mat-radio-group>
 
-      <mat-form-field>
-        <input matInput type="number" placeholder="Monto" formControlName="amount" />
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" formControlName="amount" />
+        <mat-error>Amount must be greater than 0</mat-error>
       </mat-form-field>
 
       <mat-checkbox formControlName="authorized">
-        Autorizo el pago
+        I authorize the payment
       </mat-checkbox>
 
-      <button mat-button (click)="submit()">Finalizar</button>
+      <div class="actions">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button color="accent"
+          [disabled]="paymentForm.invalid || loading"
+          (click)="submit()">
+          Finish
+        </button>
+      </div>
+
     </form>
   </mat-step>
 

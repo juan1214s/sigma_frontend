@@ -1,0 +1,23 @@
+.stepper-container {
+  max-width: 640px;
+  margin: auto;
+  padding: 32px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+}
