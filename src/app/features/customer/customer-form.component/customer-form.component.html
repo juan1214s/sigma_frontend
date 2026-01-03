@@ -1,0 +1,65 @@
+<mat-horizontal-stepper linear>
+
+  <!-- Paso 1 -->
+  <mat-step [stepControl]="userForm">
+    <form [formGroup]="userForm">
+      <mat-form-field>
+        <input matInput placeholder="Nombre" formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Teléfono" formControlName="phone" />
+      </mat-form-field>
+
+      <button mat-button matStepperNext>Continuar</button>
+    </form>
+  </mat-step>
+
+  <!-- Paso 2 -->
+  <mat-step [stepControl]="addressForm">
+    <form [formGroup]="addressForm">
+      <mat-form-field>
+        <input matInput placeholder="Calle" formControlName="street" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Ciudad" formControlName="city" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="País" formControlName="country" />
+      </mat-form-field>
+
+      <button mat-button matStepperNext>Continuar</button>
+    </form>
+  </mat-step>
+
+  <!-- Paso 3 -->
+  <mat-step [stepControl]="paymentForm">
+    <form [formGroup]="paymentForm">
+      <mat-radio-group formControlName="paymentMethod">
+        <mat-radio-button [value]="paymentMethods.Card">
+          Tarjeta
+        </mat-radio-button>
+        <mat-radio-button [value]="paymentMethods.Deposit">
+          Depósito
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field>
+        <input matInput type="number" placeholder="Monto" formControlName="amount" />
+      </mat-form-field>
+
+      <mat-checkbox formControlName="authorized">
+        Autorizo el pago
+      </mat-checkbox>
+
+      <button mat-button (click)="submit()">Finalizar</button>
+    </form>
+  </mat-step>
+
+</mat-horizontal-stepper>

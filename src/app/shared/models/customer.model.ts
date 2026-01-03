@@ -22,3 +22,12 @@ export enum PaymentMethod {
   Card = 0,
   Deposit = 1,
 }
+
+export interface CustomerResponseDto {
+  customerId: string;
+  name: string;
+  registrationDate: string;
+  totalPay: number;
+  paymentMethod: string;
+  status: string;
+}

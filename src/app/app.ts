@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CustomerFormComponent } from "./features/customer/customer-form.component/customer-form.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [ CustomerFormComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
